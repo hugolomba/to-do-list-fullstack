@@ -12,3 +12,11 @@ app.use(urlencoded({ extended: false })); <=== essa parte
 module.exports = multer({ storage });
 
 como funciona a exportação
+
+app crash nesses erros const { username, passwordHash, coverImgUrl, profileImgUrl } = req.body;
+
+if (!username || !passwordHash) throw new Error("Informações Obrigatórias");
+
+User.find({ username: username }).then((user) => {
+if (user[0].username === username) throw Error("Usuário já existe");
+});
